@@ -21,7 +21,7 @@ sqldatabase='simpledrive'
 def checksharebyshareid(shareid):
     db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
     check = db.cursor()
-    sql = 'select relativepostion,fileorfoldername,path from simpledrive.share where shareid=' + "'" + shareid + "'"
+    sql = 'select relativepostion,fileorfoldername,path from '+sqldatabase+'.share where shareid=' + "'" + shareid + "'"
     check.execute(sql)
     if (check.fetchone()) is None:
         db.close()
@@ -47,7 +47,7 @@ def checksharebyshareid(shareid):
 def checkfileorfolderalreadyexistinshare(path):
     db=pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
     check=db.cursor()
-    sql='select * from simpledrive.share where path=' + "'" + path + "'"
+    sql='select * from '+sqldatabase+'.share where path=' + "'" + path + "'"
     check.execute(sql)
     if (check.fetchone()) is None:
 
@@ -64,7 +64,7 @@ def CheckShareidSql(shareidsql):
 
     check = db.cursor()
 
-    SQL = 'select shareid from simpledrive.share where shareid=' + "'" + shareidsql + "'"
+    SQL = 'select shareid from '+sqldatabase+'.share where shareid=' + "'" + shareidsql + "'"
 
     check.execute(SQL)
 
@@ -137,7 +137,7 @@ def sharefileorfolder(path,username,filename):
                 else:
                     print('还没结束1')
             print('#1',path1)
-            sqlpha = "insert into simpledrive.share (username,path,shareid,validto,downloadedtime,entercode,isdir,relativepostion,fileorfoldername) VALUES (" + "'" + username + "'" + "," + "'" + path1 + "'" + "," + "'" + shareid + "'" + "," + "'" + validto + "'" + "," + "'" + downloadedtime + "'" + "," + "'" + entercode + "'" + "," + "'" + isdir + "'""," + "'" + relativepostion + "'""," + "'" + fileorfoldername + "'" + ")"
+            sqlpha = "insert into "+sqldatabase+".share (username,path,shareid,validto,downloadedtime,entercode,isdir,relativepostion,fileorfoldername) VALUES (" + "'" + username + "'" + "," + "'" + path1 + "'" + "," + "'" + shareid + "'" + "," + "'" + validto + "'" + "," + "'" + downloadedtime + "'" + "," + "'" + entercode + "'" + "," + "'" + isdir + "'""," + "'" + relativepostion + "'""," + "'" + fileorfoldername + "'" + ")"
             # print(sqlpha)
             check.execute(sqlpha)
             db.commit()
@@ -162,7 +162,7 @@ def sharefileorfolder(path,username,filename):
                     print('还没结束2')
             print('#2',path1)
             #print('relativepostion is: ',relativepostion)
-            sqlpha = "insert into simpledrive.share (username,path,shareid,validto,downloadedtime,entercode,isdir,relativepostion,fileorfoldername) VALUES (" + "'" + username + "'" + "," + "'" + path1 + "'" + "," + "'" + shareid + "'" + "," + "'" + validto + "'" + "," + "'" + downloadedtime + "'" + "," + "'" + entercode + "'" + "," + "'" + isdir + "'""," + "'" + relativepostion + "'""," + "'" + fileorfoldername + "'" + ")"
+            sqlpha = "insert into "+sqldatabase+".share (username,path,shareid,validto,downloadedtime,entercode,isdir,relativepostion,fileorfoldername) VALUES (" + "'" + username + "'" + "," + "'" + path1 + "'" + "," + "'" + shareid + "'" + "," + "'" + validto + "'" + "," + "'" + downloadedtime + "'" + "," + "'" + entercode + "'" + "," + "'" + isdir + "'""," + "'" + relativepostion + "'""," + "'" + fileorfoldername + "'" + ")"
             # print(sqlpha)
             check.execute(sqlpha)
             db.commit()
@@ -183,7 +183,7 @@ def sevendaysshijianchuo():
 def checksharedbyusername(username):
     db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
     check=db.cursor()
-    sql='select path,shareid,validto,downloadedtime,entercode,isdir,relativepostion,fileorfoldername from simpledrive.share where username=' + "'" + username + "'"
+    sql='select path,shareid,validto,downloadedtime,entercode,isdir,relativepostion,fileorfoldername from '+sqldatabase+'.share where username=' + "'" + username + "'"
     check.execute(sql)
     n=0
     if (check.fetchone()) is None:
@@ -249,7 +249,7 @@ def ReturnContentForCloud_ForcurrentFolder_share(username):
 def alwaysvalid(shareid):
     db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
     check = db.cursor()
-    sql =  'update simpledrive.share set validto =0 where shareid=' + "'" + shareid + "'"
+    sql =  'update '+sqldatabase+'.share set validto =0 where shareid=' + "'" + shareid + "'"
     try:
         check.execute(sql)
         db.commit()
@@ -263,7 +263,7 @@ def alwaysvalid(shareid):
 def cancelshare(shareid):
     db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
     check = db.cursor()
-    sql = 'delete  from simpledrive.share where shareid=' + "'" + shareid + "'"
+    sql = 'delete  from '+sqldatabase+'.share where shareid=' + "'" + shareid + "'"
     try:
         check.execute(sql)
         db.commit()
@@ -275,7 +275,7 @@ def cancelshare(shareid):
 def searchfromshared(username,searchcontent):
     db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
     check = db.cursor()
-    sql = 'select relativepostion,fileorfoldername from simpledrive.share where username=' + "'" + username + "'"
+    sql = 'select relativepostion,fileorfoldername from '+sqldatabase+'.share where username=' + "'" + username + "'"
     check.execute(sql)
     listforpathandfilename=[]
     efolder = []

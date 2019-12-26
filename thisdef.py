@@ -189,7 +189,7 @@ def Checkmd5(md5,username):
 
     check = db.cursor()
 
-    usernameSQL = 'select md5 from simpledrive.user where username=' + "'" + username + "'"
+    usernameSQL = 'select md5 from '+sqldatabase+'.user where username=' + "'" + username + "'"
 
     check.execute(usernameSQL)
 
@@ -255,7 +255,7 @@ def Checkisadmin(username):
 
     check = db.cursor()
 
-    usernameSQL = 'select isadmin from openvpn.user where username=' + "'" + username + "'"
+    usernameSQL = 'select isadmin from '+sqldatabase+'.user where username=' + "'" + username + "'"
 
     check.execute(usernameSQL)
 
@@ -295,7 +295,7 @@ def CheckUsername(username):
 
     check = db.cursor()
 
-    usernameSQL = 'select username from openvpn.user where username=' + "'" + username + "'"
+    usernameSQL = 'select username from '+sqldatabase+'.user where username=' + "'" + username + "'"
 
     check.execute(usernameSQL)
 
@@ -335,7 +335,7 @@ def CheckPassword(username,password):
 
     check = db.cursor()
 
-    passwordSQL = 'select password from openvpn.user where username=' + "'" + username + "'"
+    passwordSQL = 'select password from '+sqldatabase+'.user where username=' + "'" + username + "'"
 
     check.execute(passwordSQL)
 
@@ -399,7 +399,7 @@ def Checkmd5(md5,username):
     check = db.cursor()
 
     try:
-        usernameSQL = 'select md5 from simpledrive.user where username=' + "'" + username + "'"
+        usernameSQL = 'select md5 from '+sqldatabase+'.user where username=' + "'" + username + "'"
     except:
         return 0
 
@@ -443,7 +443,7 @@ def ReturnUserlist():
 
     check = db.cursor()
 
-    usernameSQL = 'select username from openvpn.user'
+    usernameSQL = 'select username from '+sqldatabase+'.user'
 
     check.execute(usernameSQL)
 
@@ -469,7 +469,7 @@ def Checkisadmin(username):
 
     check = db.cursor()
 
-    usernameSQL = 'select isadmin from simpledrive.user where username=' + "'" + username + "'"
+    usernameSQL = 'select isadmin from '+sqldatabase+'.user where username=' + "'" + username + "'"
 
     check.execute(usernameSQL)
 
@@ -509,7 +509,7 @@ def CheckUsername(username):
 
     check = db.cursor()
 
-    usernameSQL = 'select username from openvpn.user where username=' + "'" + username + "'"
+    usernameSQL = 'select username from '+sqldatabase+'.user where username=' + "'" + username + "'"
 
     check.execute(usernameSQL)
 
@@ -549,7 +549,7 @@ def CheckPassword(username,password):
 
     check = db.cursor()
 
-    passwordSQL = 'select password from openvpn.user where username=' + "'" + username + "'"
+    passwordSQL = 'select password from '+sqldatabase+'.user where username=' + "'" + username + "'"
 
     check.execute(passwordSQL)
 
@@ -859,7 +859,7 @@ def getfolderorfilesize(path,file):
 def logincheck(username,passwd,md5):
     db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
     check = db.cursor()
-    sql = 'delete  from simpledrive.share where shareid=' + "'" + shareid + "'"
+    sql = 'delete  from '+sqldatabase+'.share where shareid=' + "'" + shareid + "'"
     try:
         check.execute(sql)
         db.commit()
@@ -875,7 +875,7 @@ def CheckUsername(username):
 
     check = db.cursor()
 
-    usernameSQL = 'select username from simpledrive.user where username=' + "'" + username + "'"
+    usernameSQL = 'select username from '+sqldatabase+'.user where username=' + "'" + username + "'"
 
     check.execute(usernameSQL)
 
@@ -915,7 +915,7 @@ def CheckPassword(username,password):
 
     check = db.cursor()
 
-    passwordSQL = 'select passwd from simpledrive.user where username=' + "'" + username + "'"
+    passwordSQL = 'select passwd from '+sqldatabase+'.user where username=' + "'" + username + "'"
 
     check.execute(passwordSQL)
 

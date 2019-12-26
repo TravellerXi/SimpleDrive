@@ -23,7 +23,7 @@ def manageUserandServer(username):
     tmp=''
     db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
     check = db.cursor()
-    sql = 'select username,isadmin from simpledrive.user'
+    sql = 'select username,isadmin from'+ sqldatabase+'.user'
     check.execute(sql)
     result=check.fetchall()
     for i in result:
@@ -44,7 +44,7 @@ def deleteuser(username):
     else:
         db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
         check = db.cursor()
-        sql =  'delete  from simpledrive.user where username=' + "'" + username + "'"
+        sql =  'delete  from '+sqldatabase+'.user where username=' + "'" + username + "'"
         check.execute(sql)
         db.commit()
         db.close()
@@ -53,7 +53,7 @@ def deleteuser(username):
 def adduser(username,passwd):
     db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
     check = db.cursor()
-    sql='select username from simpledrive.user where username ='+"'"+username+"'"
+    sql='select username from '+sqldatabase+'.user where username ='+"'"+username+"'"
     check.execute(sql)
     a=check.fetchone()
     a=list(str(a).replace('(','').replace(')','').replace("'","").split(','))
