@@ -9,9 +9,9 @@
 #数据库采用Mysql，默认创建本地用户simpledrive，密码simpledrive，建立本地数据库simpledrive。
 
 
-Windows 下只需下载安装好Python3,然后 cmd运行pip3 install flask pymysql paramiko requests psutil <a href='https://codeload.github.com/TravellerXi/SimpleDrive/zip/master'>,点此下载好源码</a>。
+Windows 下只需下载安装好Python3,然后 cmd运行pip3 install flask pymysql paramiko requests psutil
 
-然后解压运行main.py即可。
+<a href='https://codeload.github.com/TravellerXi/SimpleDrive/zip/master'>,点此下载好源码</a>，然后解压运行main.py即可。
 
 
 
