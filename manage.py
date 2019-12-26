@@ -23,7 +23,7 @@ def manageUserandServer(username):
     tmp=''
     db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
     check = db.cursor()
-    sql = 'select username,isadmin from'+ sqldatabase+'.user'
+    sql = 'select username,isadmin from '+ sqldatabase+'.user'
     check.execute(sql)
     result=check.fetchall()
     for i in result:
