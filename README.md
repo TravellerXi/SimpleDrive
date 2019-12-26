@@ -35,6 +35,6 @@ SimpleDrive 简单云，内存CPU占用极简/Less use in Memory and CPU
 2. python需要安装flask, pymysql, paramiko, requests
 3. 需要安装mysql数据库。root默认不设置密码。
 
-安装细节请参考以下内容:
+安装步骤请<a href='https://github.com/TravellerXi/SimpleDrive/blob/master/static/installationStep'>点此</a>
 
 
