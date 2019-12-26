@@ -14,6 +14,11 @@ from sharehtml import *
 from searchhtml import *
 import pymysql
 
+sqlservername='localhost'
+sqluser='simpledrive'
+sqlpasswd='simpledrive'
+sqldatabase='simpledrive'
+
 
 
 def searchfilename(filename,path,username):
@@ -180,7 +185,7 @@ def ReturnCurrentPathFiles(path):
 
 def Checkmd5(md5,username):
 
-    db = pymysql.connect('localhost', 'simpledrive', 'simpledrive', 'simpledrive')
+    db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
 
     check = db.cursor()
 
@@ -220,7 +225,7 @@ def Checkmd5(md5,username):
 
 def ReturnUserlist():
 
-    db = pymysql.connect('localhost', 'openvpn', 'openvpn', 'openvpn')
+    db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
 
     check = db.cursor()
 
@@ -246,7 +251,7 @@ def ReturnUserlist():
 
 def Checkisadmin(username):
 
-    db = pymysql.connect('localhost', 'openvpn', 'openvpn', 'openvpn')
+    db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
 
     check = db.cursor()
 
@@ -286,7 +291,7 @@ def Checkisadmin(username):
 
 def CheckUsername(username):
 
-    db = pymysql.connect('localhost', 'openvpn', 'openvpn', 'openvpn')
+    db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
 
     check = db.cursor()
 
@@ -326,7 +331,7 @@ def CheckUsername(username):
 
 def CheckPassword(username,password):
 
-    db = pymysql.connect('localhost', 'openvpn', 'openvpn', 'openvpn')
+    db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
 
     check = db.cursor()
 
@@ -389,7 +394,7 @@ def inviteC():
 
 def Checkmd5(md5,username):
 
-    db = pymysql.connect('localhost', 'simpledrive', 'simpledrive', 'simpledrive')
+    db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
 
     check = db.cursor()
 
@@ -434,7 +439,7 @@ def Checkmd5(md5,username):
 
 def ReturnUserlist():
 
-    db = pymysql.connect('localhost', 'openvpn', 'openvpn', 'openvpn')
+    db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
 
     check = db.cursor()
 
@@ -460,7 +465,7 @@ def ReturnUserlist():
 
 def Checkisadmin(username):
 
-    db = pymysql.connect('localhost', 'simpledrive', 'simpledrive', 'simpledrive')
+    db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
 
     check = db.cursor()
 
@@ -500,7 +505,7 @@ def Checkisadmin(username):
 
 def CheckUsername(username):
 
-    db = pymysql.connect('localhost', 'openvpn', 'openvpn', 'openvpn')
+    db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
 
     check = db.cursor()
 
@@ -540,7 +545,7 @@ def CheckUsername(username):
 
 def CheckPassword(username,password):
 
-    db = pymysql.connect('localhost', 'openvpn', 'openvpn', 'openvpn')
+    db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
 
     check = db.cursor()
 
@@ -852,7 +857,7 @@ def getfolderorfilesize(path,file):
 
 ##this is login security check
 def logincheck(username,passwd,md5):
-    db = pymysql.connect('localhost', 'simpledrive', 'simpledrive', 'simpledrive')
+    db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
     check = db.cursor()
     sql = 'delete  from simpledrive.share where shareid=' + "'" + shareid + "'"
     try:
@@ -866,7 +871,7 @@ def logincheck(username,passwd,md5):
 
 def CheckUsername(username):
 
-    db = pymysql.connect('localhost', 'simpledrive', 'simpledrive', 'simpledrive')
+    db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
 
     check = db.cursor()
 
@@ -906,7 +911,7 @@ def CheckUsername(username):
 
 def CheckPassword(username,password):
 
-    db = pymysql.connect('localhost', 'simpledrive', 'simpledrive', 'simpledrive')
+    db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
 
     check = db.cursor()
 

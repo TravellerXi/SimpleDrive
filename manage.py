@@ -6,7 +6,10 @@ from managehtml import *
 from md5 import *
 import os
 
-
+sqlservername='localhost'
+sqluser='simpledrive'
+sqlpasswd='simpledrive'
+sqldatabase='simpledrive'
 
 def manageUserandServer(username):
     isadmin=''
@@ -18,7 +21,7 @@ def manageUserandServer(username):
         invitecode = f.read()
     content = cloudhead_manage+username+afterusername_manage+invitecode+aftercurrentinvitecode+signupstate+afteronregister
     tmp=''
-    db = pymysql.connect('localhost', 'simpledrive', 'simpledrive', 'simpledrive')
+    db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
     check = db.cursor()
     sql = 'select username,isadmin from simpledrive.user'
     check.execute(sql)
@@ -39,7 +42,7 @@ def deleteuser(username):
         return 0
     ####系统默认账号，无法被移除。
     else:
-        db = pymysql.connect('localhost', 'simpledrive', 'simpledrive', 'simpledrive')
+        db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
         check = db.cursor()
         sql =  'delete  from simpledrive.user where username=' + "'" + username + "'"
         check.execute(sql)
@@ -48,7 +51,7 @@ def deleteuser(username):
         return 1
 
 def adduser(username,passwd):
-    db = pymysql.connect('localhost', 'simpledrive', 'simpledrive', 'simpledrive')
+    db = pymysql.connect(sqlservername, sqluser, sqlpasswd, sqldatabase)
     check = db.cursor()
     sql='select username from simpledrive.user where username ='+"'"+username+"'"
     check.execute(sql)
