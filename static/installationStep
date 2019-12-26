@@ -11,7 +11,7 @@
 
 Windows 下只需下载安装好Python3,然后 cmd运行pip3 install flask pymysql paramiko requests psutil
 
-<a href='https://codeload.github.com/TravellerXi/SimpleDrive/zip/master'>,点此下载好源码</a>，然后解压运行main.py即可。
+然后从'https://codeload.github.com/TravellerXi/SimpleDrive/zip/master'下载与那吗，然后解压运行main.py即可。
 
 
 
