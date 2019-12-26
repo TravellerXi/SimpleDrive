@@ -1,0 +1,108 @@
+# coding:utf-8
+
+###❤必读：
+
+#环境：Centos 6/7（通过安装检查√）, Linux应都可以安装。Windows 10（通过安装检查√）,windows平台应可安装。
+
+#Python 3，在下述安装中，使用Python3.6.5，其他Python3版本亦可。（换言之，如果安装了Python3，即可跳过Python3，安装，但需执行pip3 install flask pymysql paramiko requests psutil，详情见安装手册）
+
+#数据库采用Mysql，默认创建本地用户simpledrive，密码simpledrive，建立本地数据库simpledrive。
+
+
+Windows 下只需下载安装好Python3,然后 cmd运行pip3 install flask pymysql paramiko requests psutil，<a href='https://codeload.github.com/TravellerXi/SimpleDrive/zip/master' target='_blank'>点此下载好源码。
+
+然后解压运行main.py即可。
+
+
+
+以下是Linux环境下安装细节：
+
+
+###安装Python3.6.5   ###如果已经安装好python3任意版本，可以跳过。
+
+yum install -y wget unzip wget 
+
+
+mkdir -p /simpledrive
+
+cd /simpledrive
+
+wget https://www.python.org/ftp/python/3.6.5/Python-3.6.5.tgz
+
+
+tar xzvf Python-3.6.5.tgz
+
+rm -rf /simpledrive/Python-3.6.5/Modules/Setup.dist
+
+cp -f /simpledrive/Setup.dist /simpledrive/Python-3.6.5/Modules/Setup.dist
+
+cd /simpledrive/Python-3.6.5/
+
+./configure --prefix=/usr/local/python
+
+make && make install
+
+ln -s /usr/local/python/bin/python3.6 /usr/bin/python3
+
+ln -s /usr/local/python/bin/pip3.6 /usr/bin/pip3
+
+yum install -y python-pip
+
+pip3 install flask pymysql paramiko requests psutil
+
+cd /simpledrive/ && rm -rf Python-3.6.5*
+
+###开启防火墙指定端口
+
+vi /etc/sysconfig/iptables
+
+
+###在'-A INPUT'第一行加一句(ACCEPT一定要在REJECT语句之前)：
+
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT
+
+####
+
+service iptables restart
+
+
+###下载解压代码
+
+
+cd /simpledrive
+
+wget https://codeload.github.com/TravellerXi/SimpleDrive/zip/master
+
+unzip master
+
+\cp -R -f simpledrive-master/* /simpledrive/
+
+
+
+####配置启动mysql
+
+service mysqld start
+
+mysql -uroot < /simpledrive/static/simpledrive.sql
+
+
+
+####启动程序
+
+nohup python3 /simpledrive/main.py > /simpledrive/main.log 2>&1 &
+
+#浏览器输入服务器IP即可访问管理后台。
+
+###注意：
+
+###默认管理员admin，密码admin
+
+
+###请登入系统后尽快修改管理员密码。
+
+
+
+
+
+
+
