@@ -22,7 +22,7 @@ SimpleDrive 简单云，内存CPU占用极简/Less use in Memory and CPU
 <br><br><br>
 
 
-demo<a href='https://demo.fastspeedgo.xyz' target='_blank'>点此直达</a>
+demo<a href='https://simpledrive-demo.fastspeedgo.xyz' target='_blank'>点此直达</a>
 用户名:admin  密码:admin
 <br><br>
 
