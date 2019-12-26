@@ -77,7 +77,9 @@ wget https://codeload.github.com/TravellerXi/SimpleDrive/zip/master
 
 unzip master
 
-\cp -R -f simpledrive-master/* /simpledrive/
+\cp -R -f SimpleDrive-master/* /simpledrive/
+
+rm -rf SimpleDrive-master/ master
 
 
 
