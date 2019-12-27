@@ -35,7 +35,7 @@ demo<a href='https://simpledrive-demo.fastspeedgo.xyz' target='_blank'>点此直
 
 
 1. 需要安装Python3以上编译器。
-2. python需要安装flask, pymysql, paramiko, requests
+2. python需要安装flask, pymysql, paramiko, requests,psutil
 3. 需要安装mysql数据库。root默认不设置密码。
 
 安装步骤请<a href='https://github.com/TravellerXi/SimpleDrive/blob/master/static/installationStep'>点此</a>
