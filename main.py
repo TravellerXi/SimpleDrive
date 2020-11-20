@@ -1,5 +1,4 @@
 #!/usr/bin/python
-
 # coding:utf-8
 import shutil
 from flask import Flask,request,session,redirect,Response
