@@ -96,32 +96,18 @@ def signin_form():
 @app.route('/login', methods=['POST'])
 def login_post():
     username = str(request.form['username'])
-
     password = str(request.form['password'])
-
-    if CheckUsername(username) > 1:
-
-        if CheckPassword(username, password) > 1:
-
-            md5hash = md5(password)
-
-            response = redirect('/folder')
-
-            response.set_cookie('username', username, max_age=7 * 24 * 3600)
-
-            response.set_cookie('credit', md5hash, max_age=7 * 24 * 3600)
-
-            return response
-
-
-
-        else:
-
-            return (('error') + '<p>用户名或密码错误</p><br><a href="/login">返回登录</a>')
-
-    else:
-
+    from User import User
+    from ErrorCode import UserNameError, PasswdError
+    LoginResult=User.login(username,password)
+    if LoginResult==UserNameError or LoginResult==PasswdError:
         return (('error') + '<p>用户名或密码错误</p><br><a href="/login">返回登录</a>')
+    else:
+        credit=LoginResult
+        response = redirect('/folder')
+        response.set_cookie('username', username, max_age=7 * 24 * 3600)
+        response.set_cookie('credit', credit, max_age=7 * 24 * 3600)
+        return response
 
 
 @app.route('/lib/<path:filename>',methods=['GET'])
