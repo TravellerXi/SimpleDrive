@@ -524,7 +524,6 @@ def signup():
 
 @app.route('/favicon',methods=['GET'])
 def get_fav():
-
     return app.send_static_file('favicon.png')
 
 
