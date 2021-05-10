@@ -2,12 +2,10 @@
 # coding:utf-8
 import shutil
 from flask import Flask,request,session,redirect,Response
-
 from flask import send_from_directory
 from login import *
 from thisistest import *
 from update import *
-
 import os
 import time
 import time
@@ -16,15 +14,9 @@ from share import *
 #from sharehtml import *
 from manage import *
 from serverstatus import *
-
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-
-
-
-
 app =Flask(__name__)
-
 
 @app.route('/cloud',methods=['GET'])
 def cloud_redirect():
@@ -58,6 +50,7 @@ def cloud_folder_get(folders):
         return redirect('/login')
     else:
         path = os.getcwd() + '/cloud/' + username + '/' + folders
+        #TODO 修改ReturnContentForCloud_ForcurrentFolder 方法
         return (ReturnContentForCloud_ForcurrentFolder(path, username, folders))
 
 
@@ -417,7 +410,7 @@ def manage_POST():
             print(signupstate)
             with open('static/signupstate', 'w', encoding='utf-8') as f:
                 f.write(signupstate)
-            print('1')
+            #print('1')
             return('开/关注册 设置成功<br>' + manageUserandServer(username))
         elif request.form['formname']=='registerbyinvitecode':
             invitecode=str(request.form['invitecode'])
