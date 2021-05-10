@@ -15,9 +15,9 @@ def signin_form():
 def login_post():
     username = str(request.form['username'])
     password = str(request.form['password'])
-    from modules.User import User
-    from modules.ErrorCode import UserNameError, PasswdError
-    LoginResult=User.login(username,password)
+    from modules.User import login
+    from methods.ErrorCode import UserNameError, PasswdError
+    LoginResult=login(username,password)
     if LoginResult==UserNameError or LoginResult==PasswdError:
         return render_template("UsernamePasswordError.html")
     else:
