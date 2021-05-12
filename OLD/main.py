@@ -50,7 +50,7 @@ def cloud_folder_get(folders):
         return redirect('/login')
     else:
         path = os.getcwd() + '/cloud/' + username + '/' + folders
-        #TODO 修改ReturnContentForCloud_ForcurrentFolder 方法
+        # TODO 修改ReturnContentForCloud_ForcurrentFolder 方法
         return (ReturnContentForCloud_ForcurrentFolder(path, username, folders))
 
 

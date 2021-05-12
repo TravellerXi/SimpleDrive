@@ -3,10 +3,15 @@
 # coding:utf-8
 import os
 import time
+
+from flask import Flask,request,session,redirect,Response
+
+from flask import send_from_directory
+
 import os
-from __old__.folder import *
-from __old__.sharehtml import *
-from __old__.searchhtml import *
+from folder import *
+from sharehtml import *
+from searchhtml import *
 import pymysql
 
 sqlservername='localhost'

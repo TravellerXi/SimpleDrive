@@ -4,6 +4,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import redirect
+from flask import send_from_directory
 app =Flask(__name__)
 
 @app.route('/login', methods=['GET'])
@@ -52,3 +53,37 @@ def login_firstpage():
         return redirect('/login')
     else:
         return redirect('/folder')
+
+@app.route('/folder',methods=['GET'])
+def cloud_get():
+    import os
+    username =request.cookies.get('username')
+    md5credit = request.cookies.get('credit')
+    from modules.Sql import SqlMethod
+    Sql=SqlMethod()
+    if Sql.Checkmd5(md5=md5credit, username=username) == 0:
+        print(Sql.Checkmd5(md5=md5credit, username=username))
+        return redirect('/login')
+    else:
+        path = os.getcwd() + '/cloud/' + username
+        from modules.folder import ReturnContentForCloud_ForcurrentFolder
+        return (ReturnContentForCloud_ForcurrentFolder(path, username, ''))
+
+@app.route('/pan/<path:filename>',methods=['GET'])
+def pan_get(filename):
+    import os
+    path = os.getcwd() + '/lib/' + 'pan'
+    from __old__.thisdef import checkFilenameAndFolder
+    nextpath = checkFilenameAndFolder(filename)[1]
+    path1 = path + '/' + nextpath
+    thisisfilename = checkFilenameAndFolder(filename)[0]
+    if thisisfilename[0:1] == ' ':
+        if nextpath == 'nodirhere':
+            return send_from_directory(path, path=thisisfilename[1:], as_attachment=True)
+        else:
+            return send_from_directory(path1, path=thisisfilename[1:], as_attachment=True)
+    else:
+        if nextpath == 'nodirhere':
+            return send_from_directory(path, path=thisisfilename, as_attachment=True)
+        else:
+            return send_from_directory(path1, path=thisisfilename, as_attachment=True)
