@@ -5,6 +5,7 @@ from flask import render_template
 from flask import request
 from flask import redirect
 from flask import send_from_directory
+import os
 app =Flask(__name__)
 
 @app.route('/login', methods=['GET'])
@@ -71,15 +72,34 @@ def cloud_get():
 
 @app.route('/pan/<path:filename>',methods=['GET'])
 def pan_get(filename):
-    import os
     path = os.getcwd() + '/lib/' + 'pan'
     from __old__.thisdef import checkFilenameAndFolder
     nextpath = checkFilenameAndFolder(filename)[1]
     path1 = path + '/' + nextpath
     thisisfilename = checkFilenameAndFolder(filename)[0]
+    # FLASK 2.0.0 更新以后，flask.send_from_directory(directory, path, **kwargs)
     if thisisfilename[0:1] == ' ':
         if nextpath == 'nodirhere':
             return send_from_directory(path, path=thisisfilename[1:], as_attachment=True)
+        else:
+            return send_from_directory(path1, path=thisisfilename[1:], as_attachment=True)
+    else:
+        if nextpath == 'nodirhere':
+            return send_from_directory(path, path=thisisfilename, as_attachment=True)
+        else:
+            return send_from_directory(path1, path=thisisfilename, as_attachment=True)
+
+@app.route('/lib/<path:filename>',methods=['GET'])
+def lib_get(filename):
+    path = os.getcwd() + '/' + 'lib'
+    from __old__.thisdef import checkFilenameAndFolder
+    nextpath = checkFilenameAndFolder(filename)[1]
+    path1 = path + '/' + nextpath
+    thisisfilename = checkFilenameAndFolder(filename)[0]
+    # FLASK 2.0.0 更新以后，flask.send_from_directory(directory, path, **kwargs)
+    if thisisfilename[0:1] == ' ':
+        if nextpath == 'nodirhere':
+            return send_from_directory(directory=path, path=thisisfilename[1:], as_attachment=True)
         else:
             return send_from_directory(path1, path=thisisfilename[1:], as_attachment=True)
     else:
